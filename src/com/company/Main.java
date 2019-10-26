@@ -1,11 +1,15 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
+    static ArrayList<Animal> animals = new ArrayList<>();
+    static ArrayList<Employee> employees = new ArrayList<>();
+    static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
         MainMenu();
@@ -16,7 +20,7 @@ public class Main {
             System.out.println("Welcome to Lush Acres Petting Zoo, please choose your option below\n" +
                     "1. Animal administration\n" +
                     "2. Employee Administration\n" +
-                    "3. Profit calculations" +
+                    "3. Profit calculations\n" +
                     "4. Help\n" +
                     "5. Exit");
             menuChoice = inputScanner.nextLine();
@@ -33,7 +37,16 @@ public class Main {
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Add new animal to the petting zoo");
+                                System.out.println("Which kind of animal will you add?\n" +
+                                        "1. Goat\n" +
+                                        "2. Sheep\n" +
+                                        "3. Duck");
+                                menuChoice = inputScanner.nextLine();
+                                if (menuChoice == "1" || menuChoice == "2" || menuChoice == "3"){ //TODO Får invalid input alltid
+                                    addAnimal(menuChoice);
+                                }
+                                else
+                                    System.out.println("Invalid input.");
                                 break;
                             case "2":
                                 System.out.println("Retire animal from the petting zoo");
@@ -72,7 +85,8 @@ public class Main {
                                 System.out.println("Retire animal from the petting zoo");
                                 break;
                             case "3":
-                                System.out.println("Show all current animals");
+                                System.out.println("Showing all current animals");
+                                System.out.println(animals);
                                 break;
                             case "4":
                                 System.out.println("Show specific animal");
@@ -99,6 +113,26 @@ public class Main {
                 default:
                     System.out.println("Choose your option by entering the corresponding number and pressing enter");
             }
+        }
+    }
+
+    static void addAnimal (String animalType){
+        int age = 0;
+        String userInput;
+        if (animalType == "1"){
+            System.out.println("Enter the goats age");
+            userInput = inputScanner.nextLine();
+            age = Integer.parseInt(userInput);
+            System.out.println("Enter the goats name");
+            userInput = inputScanner.nextLine();
+            Goat newGoat = new Goat(age, userInput);
+            animals.add(newGoat);
+        }
+        else if (animalType == "2"){
+
+        }
+        else if (animalType == "3"){
+
         }
     }
 }
