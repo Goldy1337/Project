@@ -22,27 +22,37 @@ public class Main {
             switch (menuChoice){
                 case "1":
                     while (!menuChoice.equals("6")){
-                        System.out.println("Lush Acres Animal Administration");
+                        System.out.println("Lush Acres Animal Administration\n" +
+                                "1. Add new animal to the petting zoo\n" +
+                                "2. Retire animal from the petting zoo\n" +
+                                "3. Show all current animals\n" +
+                                "4. Show specific animal\n" +
+                                "5. Help\n" +
+                                "6. Return to main menu");
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Placeholder");
+                                System.out.println("Add new animal to the petting zoo");
+                                break;
                             case "2":
-                                System.out.println("Placeholder");
+                                System.out.println("Retire animal from the petting zoo");
+                                break;
                             case "3":
-                                System.out.println("Placeholder");
+                                System.out.println("Show all current animals");
+                                break;
                             case "4":
-                                System.out.println("Placeholder");
+                                System.out.println("Show specific animal");
+                                break;
                             case "5":
-                                System.out.println("Placeholder");
+                                System.out.println("Help");
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
-                                break;
                         }
                     }
+                    break;
                 case "2":
-                    System.out.println("Placeholder");
+                    System.out.println("bah"); //TODO Detta aktiveras efter return to main menu från undermeny 1...
                     break;
                 case "3":
                     System.out.println("Placeholder");
