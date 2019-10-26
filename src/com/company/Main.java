@@ -52,7 +52,35 @@ public class Main {
                     }
                     break;
                 case "2":
-                    System.out.println("bah"); //TODO Detta aktiveras efter return to main menu från undermeny 1...
+                    while (!menuChoice.equals("6")){
+                        System.out.println("Lush Acres Employee Administration\n" +
+                                "1. Add new employee to the petting zoo staff\n" +
+                                "2. Retire employee from the petting zoo staff\n" +
+                                "3. Show all current employees\n" +
+                                "4. Show specific employee\n" +
+                                "5. Help\n" +
+                                "6. Return to main menu");
+                        menuChoice = inputScanner.nextLine();
+                        switch (menuChoice){
+                            case "1":
+                                System.out.println("Add new animal to the petting zoo");
+                                break;
+                            case "2":
+                                System.out.println("Retire animal from the petting zoo");
+                                break;
+                            case "3":
+                                System.out.println("Show all current animals");
+                                break;
+                            case "4":
+                                System.out.println("Show specific animal");
+                                break;
+                            case "5":
+                                System.out.println("Help");
+                                break;
+                            case "6":
+                                System.out.println("Returning to main menu");
+                        }
+                    }
                     break;
                 case "3":
                     System.out.println("Placeholder");
