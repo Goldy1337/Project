@@ -1,9 +1,12 @@
 package com.company;
 
 abstract class Person {
-    private int age;
-    private String name;
-    public Person(int age, String name){}
+    protected int age;
+    protected String name;
+    public Person(int age, String name){
+        this.age = age;
+        this.name = name;
+    }
 
     public int getAge() {
         return age;

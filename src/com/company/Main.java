@@ -8,7 +8,7 @@ public class Main {
     private static String menuChoice = "";
 
     public static void main(String[] args) {
-        //MainMenu();
+        MainMenu();
     }
 
     private static void MainMenu(){
