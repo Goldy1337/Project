@@ -101,7 +101,7 @@ public class Main {
                                 System.out.println("Show specific employee");
                                 break;
                             case "5":
-                                System.out.println("In the Employee Adiministration menu you can:\n" +
+                                System.out.println("In the Employee Administration menu you can:\n" +
                                         "Add hired or retire employees to/from the petting zoo staff,\n" +
                                         "show all the current employees\n" +
                                         "or a specific employee currently working in the petting zoo.");
