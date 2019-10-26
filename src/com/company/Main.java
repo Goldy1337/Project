@@ -12,12 +12,13 @@ public class Main {
     }
 
     private static void MainMenu(){
-        while (!menuChoice.equals("4")){
+        while (!menuChoice.equals("5")){
             System.out.println("Welcome to Lush Acres Petting Zoo, please choose your option below\n" +
                     "1. Animal administration\n" +
                     "2. Employee Administration\n" +
-                    "3. Help\n" +
-                    "4. Exit");
+                    "3. Profit calculations" +
+                    "4. Help\n" +
+                    "5. Exit");
             menuChoice = inputScanner.nextLine();
             switch (menuChoice){
                 case "1":
@@ -87,10 +88,13 @@ public class Main {
                     }
                     break;
                 case "3":
-                    System.out.println("Placeholder");
+                    System.out.println("Profit Calculations");
                     break;
                 case "4":
-                    System.out.println("Exiting program");
+                    System.out.println("Help");
+                    break;
+                case "5":
+                    System.out.println("Exiting Program");
                     break;
                 default:
                     System.out.println("Choose your option by entering the corresponding number and pressing enter");
