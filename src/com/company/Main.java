@@ -42,7 +42,7 @@ public class Main {
                                         "2. Sheep\n" +
                                         "3. Duck");
                                 menuChoice = inputScanner.nextLine();
-                                if (menuChoice == "1" || menuChoice == "2" || menuChoice == "3"){ //TODO Får invalid input alltid
+                                if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3")){ //TODO Får invalid input alltid
                                     addAnimal(menuChoice);
                                 }
                                 else
@@ -52,7 +52,8 @@ public class Main {
                                 System.out.println("Retire animal from the petting zoo");
                                 break;
                             case "3":
-                                System.out.println("Show all current animals");
+                                System.out.println("Showing all current animals");
+                                System.out.println(animals);
                                 break;
                             case "4":
                                 System.out.println("Show specific animal");
@@ -119,7 +120,7 @@ public class Main {
     static void addAnimal (String animalType){
         int age = 0;
         String userInput;
-        if (animalType == "1"){
+        if (animalType.equals("1")){
             System.out.println("Enter the goats age");
             userInput = inputScanner.nextLine();
             age = Integer.parseInt(userInput);
@@ -128,11 +129,23 @@ public class Main {
             Goat newGoat = new Goat(age, userInput);
             animals.add(newGoat);
         }
-        else if (animalType == "2"){
-
+        else if (animalType.equals("2")){
+            System.out.println("Enter the sheep's age");
+            userInput = inputScanner.nextLine();
+            age = Integer.parseInt(userInput);
+            System.out.println("Enter the sheep's name");
+            userInput = inputScanner.nextLine();
+            Sheep newSheep = new Sheep(age, userInput);
+            animals.add(newSheep);
         }
-        else if (animalType == "3"){
-
+        else if (animalType.equals("3")){
+            System.out.println("Enter the ducks age");
+            userInput = inputScanner.nextLine();
+            age = Integer.parseInt(userInput);
+            System.out.println("Enter the ducks name");
+            userInput = inputScanner.nextLine();
+            Duck newDuck = new Duck(age, userInput);
+            animals.add(newDuck);
         }
     }
 }
