@@ -15,4 +15,9 @@ abstract class Animal {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return name + " is a " + age + " year old " + "[INSERT ANIMAL TYPE HERE]" + ".";
+    }
 }

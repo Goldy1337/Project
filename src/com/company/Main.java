@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -42,7 +43,7 @@ public class Main {
                                         "2. Sheep\n" +
                                         "3. Duck");
                                 menuChoice = inputScanner.nextLine();
-                                if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3")){ //TODO Får invalid input alltid
+                                if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3")){
                                     addAnimal(menuChoice);
                                 }
                                 else
@@ -53,7 +54,9 @@ public class Main {
                                 break;
                             case "3":
                                 System.out.println("Showing all current animals");
-                                System.out.println(animals);
+                                for (Animal animal : animals){
+                                    System.out.println(animal.toString());
+                                }
                                 break;
                             case "4":
                                 System.out.println("Show specific animal");
