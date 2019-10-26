@@ -1,15 +1,17 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
-    static ArrayList<Animal> animals = new ArrayList<>();
-    static ArrayList<Employee> employees = new ArrayList<>();
+    static HashMap<String, Animal> animals = new HashMap<>();
+    //static ArrayList<Animal> animals = new ArrayList<>();
+    static HashMap<String, Person> employees = new HashMap<>();
+    //static ArrayList<Employee> employees = new ArrayList<>();
     static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -50,25 +52,32 @@ public class Main {
                                     System.out.println("Invalid input.");
                                 break;
                             case "2":
-                                System.out.println("Retire animal from the petting zoo");
+                                System.out.println("Enter animal ID to retire it from the petting zoo");
+                                menuChoice = inputScanner.nextLine();
+                                animals.remove(menuChoice);
+                                System.out.println("Removing animal from database");
                                 break;
                             case "3":
                                 System.out.println("Showing all current animals");
-                                for (Animal animal : animals){
-                                    System.out.println(animal.toString());
+                                for (String i : animals.keySet()){
+                                    System.out.println("ID: " + i + ", " + animals.get(i).toString());
                                 }
                                 break;
                             case "4":
-                                System.out.println("Show specific animal");
+                                System.out.println("Enter ID for the animal");
+                                menuChoice = inputScanner.nextLine();
+                                System.out.println("Showing specified animal");
+                                System.out.println(animals.get(menuChoice));;
                                 break;
                             case "5":
-                                System.out.println("In the Animal Adiministration menu you can:\n" +
+                                System.out.println("In the Animal Administration menu you can:\n" +
                                         "Add or retire animals to/from the petting zoo,\n" +
                                         "show all the current animals\n" +
                                         "or a specific animal currently in the petting zoo.");
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
+                                break;
                             default:
                                 System.out.println("Choose your option by entering the corresponding number and pressing enter");
                         }
@@ -90,15 +99,22 @@ public class Main {
                                 addEmployee();
                                 break;
                             case "2":
-                                System.out.println("Retire employee from the petting zoo staff");
+                                System.out.println("Enter employee ID to retire them from the petting zoo staff");
+                                menuChoice = inputScanner.nextLine();
+                                employees.remove(menuChoice);
+                                System.out.println("Removing employee from database");
                                 break;
                             case "3":
                                 System.out.println("Showing all current employees");
-                                for (Employee employee : employees){
-                                    System.out.println(employee.toString());
+                                for (String i : employees.keySet()){
+                                    System.out.println("ID: " + i + ", " + employees.get(i).toString());
                                 }
+                                break;
                             case "4":
-                                System.out.println("Show specific employee");
+                                System.out.println("Enter ID for the employee");
+                                menuChoice = inputScanner.nextLine();
+                                System.out.println("Showing specified employee");
+                                System.out.println(employees.get(menuChoice));
                                 break;
                             case "5":
                                 System.out.println("In the Employee Administration menu you can:\n" +
@@ -108,6 +124,7 @@ public class Main {
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
+                                break;
                             default:
                                 System.out.println("Choose your option by entering the corresponding number and pressing enter");
                         }
@@ -138,7 +155,9 @@ public class Main {
             System.out.println("Enter the goats name");
             userInput = inputScanner.nextLine();
             Goat newGoat = new Goat(age, userInput);
-            animals.add(newGoat);
+            System.out.println("Enter an ID for the goat");
+            userInput = inputScanner.nextLine();
+            animals.put(userInput, newGoat);
         }
         else if (animalType.equals("2")){
             System.out.println("Enter the sheep's age");
@@ -147,7 +166,9 @@ public class Main {
             System.out.println("Enter the sheep's name");
             userInput = inputScanner.nextLine();
             Sheep newSheep = new Sheep(age, userInput);
-            animals.add(newSheep);
+            System.out.println("Enter an ID for the sheep");
+            userInput = inputScanner.nextLine();
+            animals.put(userInput, newSheep);
         }
         else if (animalType.equals("3")){
             System.out.println("Enter the ducks age");
@@ -156,7 +177,9 @@ public class Main {
             System.out.println("Enter the ducks name");
             userInput = inputScanner.nextLine();
             Duck newDuck = new Duck(age, userInput);
-            animals.add(newDuck);
+            System.out.println("Enter an ID for the duck");
+            userInput = inputScanner.nextLine();
+            animals.put(userInput, newDuck);
         }
     }
     static void addEmployee(){
@@ -168,6 +191,8 @@ public class Main {
         System.out.println("Enter the employee's name");
         userInput = inputScanner.nextLine();
         Employee newEmployee = new Employee(age, userInput);
-        employees.add(newEmployee);
+        System.out.println("Enter an ID for the employee");
+        userInput = inputScanner.nextLine();
+        employees.put(userInput, newEmployee);
     }
 }
