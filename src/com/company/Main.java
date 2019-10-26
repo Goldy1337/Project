@@ -48,6 +48,8 @@ public class Main {
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
+                            default:
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
                         }
                     }
                     break;
@@ -79,6 +81,8 @@ public class Main {
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
+                            default:
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
                         }
                     }
                     break;
@@ -87,10 +91,10 @@ public class Main {
                     break;
                 case "4":
                     System.out.println("Exiting program");
+                    break;
+                default:
+                    System.out.println("Choose your option by entering the corresponding number and pressing enter");
             }
         }
-
-
-
     }
 }
