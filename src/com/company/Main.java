@@ -62,7 +62,10 @@ public class Main {
                                 System.out.println("Show specific animal");
                                 break;
                             case "5":
-                                System.out.println("Help");
+                                System.out.println("In the Animal Adiministration menu you can:\n" +
+                                        "Add or retire animals to/from the petting zoo,\n" +
+                                        "show all the current animals\n" +
+                                        "or a specific animal currently in the petting zoo.");
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
@@ -83,20 +86,25 @@ public class Main {
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Add new animal to the petting zoo");
+                                System.out.println("Add new employee to the petting zoo staff");
+                                addEmployee();
                                 break;
                             case "2":
-                                System.out.println("Retire animal from the petting zoo");
+                                System.out.println("Retire employee from the petting zoo staff");
                                 break;
                             case "3":
-                                System.out.println("Showing all current animals");
-                                System.out.println(animals);
-                                break;
+                                System.out.println("Showing all current employees");
+                                for (Employee employee : employees){
+                                    System.out.println(employee.toString());
+                                }
                             case "4":
-                                System.out.println("Show specific animal");
+                                System.out.println("Show specific employee");
                                 break;
                             case "5":
-                                System.out.println("Help");
+                                System.out.println("In the Employee Adiministration menu you can:\n" +
+                                        "Add hired or retire employees to/from the petting zoo staff,\n" +
+                                        "show all the current employees\n" +
+                                        "or a specific employee currently working in the petting zoo.");
                                 break;
                             case "6":
                                 System.out.println("Returning to main menu");
@@ -150,5 +158,16 @@ public class Main {
             Duck newDuck = new Duck(age, userInput);
             animals.add(newDuck);
         }
+    }
+    static void addEmployee(){
+        int age = 0;
+        String userInput;
+        System.out.println("Enter the employee's age");
+        userInput = inputScanner.nextLine();
+        age = Integer.parseInt(userInput);
+        System.out.println("Enter the employee's name");
+        userInput = inputScanner.nextLine();
+        Employee newEmployee = new Employee(age, userInput);
+        employees.add(newEmployee);
     }
 }
