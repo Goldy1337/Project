@@ -10,14 +10,6 @@ abstract class Animal {
         this.animalType = animalType;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     @Override
     public String toString() {
         return name + " is a " + age + " year old " + animalType + ".";
