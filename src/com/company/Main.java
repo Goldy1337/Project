@@ -8,14 +8,12 @@ public class Main {
 
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
-    static HashMap<String, Animal> animals = new HashMap<>();
+    private static HashMap<String, Animal> animals = new HashMap<>();
     static HashMap<String, Person> employees = new HashMap<>();
     static ArrayList<Visitor> visitors = new ArrayList<>();
-    static float profit = 0;
-    static float expenses = 0;
 
     public static void main(String[] args) {
-        readFromSavedFiles();
+        readFromSavedRegistries();
         MainMenu();
     }
 
@@ -243,7 +241,7 @@ public class Main {
             animals.put(userInput, newDuck);
             FileUtils.writeToAnimalList(animals);
         }
-    }
+    } //TODO hindra krash om inte ett int matas till age
 
     private static void addEmployee(){
         int age = 0;
@@ -258,7 +256,7 @@ public class Main {
         userInput = inputScanner.nextLine();
         employees.put(userInput, newEmployee);
         FileUtils.writeToEmployeeList(employees);
-    }
+    } //TODO hindra krash om inte ett int matas till age
 
     private static void addVisitor(){
         int age = 0;
@@ -270,9 +268,9 @@ public class Main {
         userInput = inputScanner.nextLine();
         Visitor newVisitor = new Visitor(age, userInput);
         visitors.add(newVisitor);
-    }
+    } //TODO hindra krash om inte ett int matas till age
 
-    private static void readFromSavedFiles(){
+    private static void readFromSavedRegistries(){
         animals = FileUtils.readFromAnimalList("animalList.dat");
         employees = FileUtils.readFromEmployeeList("employeeList.dat");
     }
