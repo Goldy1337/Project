@@ -15,18 +15,19 @@ public class Main {
     static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
-        animals = FileUtils.readFromAnimalList("animalList.dat");
+        readFromSavedFiles();
         MainMenu();
     }
 
     private static void MainMenu(){
-        while (!menuChoice.equals("5")){
+        while (!menuChoice.equals("6")){
             System.out.println("Welcome to Lush Acres Petting Zoo, please choose your option below\n" +
                     "1. Animal administration\n" +
                     "2. Employee Administration\n" +
-                    "3. Profit calculations\n" +
-                    "4. Help\n" +
-                    "5. Exit");
+                    "3. Visitor Admission\n" +
+                    "4. Profit calculations\n" +
+                    "5. Help\n" +
+                    "6. Exit");
             menuChoice = inputScanner.nextLine();
             switch (menuChoice){
                 case "1":
@@ -77,7 +78,6 @@ public class Main {
                                 if (animals.containsKey(menuChoice)) {
                                     System.out.println("Showing specified animal");
                                     System.out.println(animals.get(menuChoice));
-                                    ;
                                     break;
                                 }
                                 else if (!animals.containsKey(menuChoice)){
@@ -158,13 +158,45 @@ public class Main {
                     }
                     break;
                 case "3":
+                    while (!menuChoice.equals("4")){
+                        System.out.println("Lush Acres Visitor Admission\n" +
+                                "1. Register visitor\n" +
+                                "2. Show visitors\n" +
+                                "3. Help\n" +
+                                "4. Return to main menu");
+                        menuChoice = inputScanner.nextLine();
+                        switch (menuChoice){
+                            case "1":
+                                System.out.println("Add new petting zoo visitor"); //TODO implement
+                                break;
+                            case "2":
+                                System.out.println("Showing visitors"); //TODO Implement
+                                for (Person visitor : visitors){
+
+                                    break;
+                                }
+                            case "3":
+                                System.out.println("In Visitor Admission you can register visitors.\n" +
+                                        "Current admission prices:\n" +
+                                        "Age 8 and under, free admission\n" +
+                                        "Ages 9-18, 3,6$\n" +
+                                        "Ages 19 and above, 8,9$.");
+                                break;
+                            case "4":
+                                System.out.println("Returning to main menu");
+                                break;
+                            default:
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
+                        }
+                    }
+                    break;
+                case "4":
                     System.out.println("Profit Calculations");
                     break;
-                case "4": //TODO Make actual help menu, put readObjects elsewhere
-                    System.out.println("Help");
-                    System.out.println(FileUtils.readFromAnimalList("animalList.dat"));
-                    break;
                 case "5":
+                    System.out.println("Help");
+                    break;
+                case "6":
                     System.out.println("Exiting Program");
                     break;
                 default:
@@ -173,7 +205,7 @@ public class Main {
         }
     }
 
-    private static void addAnimal (String animalType){ //TODO Fix overwriting issue?
+    private static void addAnimal (String animalType){
         int age = 0;
         String userInput;
         if (animalType.equals("1")){
@@ -213,7 +245,7 @@ public class Main {
             FileUtils.writeToAnimalList(animals);
         }
     }
-    private static void addEmployee(){ //TODO add write/read to file capability
+    private static void addEmployee(){
         int age = 0;
         String userInput;
         System.out.println("Enter the employee's age");
@@ -225,5 +257,11 @@ public class Main {
         System.out.println("Enter an ID for the employee");
         userInput = inputScanner.nextLine();
         employees.put(userInput, newEmployee);
+        FileUtils.writeToEmployeeList(employees);
+    }
+
+    private static void readFromSavedFiles(){
+        animals = FileUtils.readFromAnimalList("animalList.dat");
+        employees = FileUtils.readFromEmployeeList("employeeList.dat");
     }
 }

@@ -1,6 +1,8 @@
 package com.company;
 
-abstract class Person {
+import java.io.Serializable;
+
+abstract class Person implements Serializable {
     protected int age;
     protected String name;
     public Person(int age, String name){
