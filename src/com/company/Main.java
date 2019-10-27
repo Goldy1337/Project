@@ -76,7 +76,6 @@ public class Main {
                                 System.out.println("Enter ID for the animal");
                                 menuChoice = inputScanner.nextLine();
                                 if (animals.containsKey(menuChoice)) {
-                                    System.out.println("Showing specified animal");
                                     System.out.println(animals.get(menuChoice));
                                     break;
                                 }
@@ -135,7 +134,6 @@ public class Main {
                                 System.out.println("Enter ID for the employee");
                                 menuChoice = inputScanner.nextLine();
                                 if (employees.containsKey(menuChoice)){
-                                    System.out.println("Showing specified employee");
                                     System.out.println(employees.get(menuChoice));
                                     break;
                                 }
@@ -192,18 +190,7 @@ public class Main {
                     }
                     break;
                 case "4":
-                    System.out.println("Calculating todays profit");
-                    float salary = 0;
-                    float income = 0;
-                    for (String i : employees.keySet()){
-                        salary = salary - 10.2f;
-                        expenses = salary;
-                    }
-                    for (Person visitor : visitors){
-                       income = income + visitor.profitCalculation();
-                       profit = income + expenses; //TODO Finslipa lite
-                    }
-                    System.out.println("Todays estimated profits are " + (profit) + "$");
+                    System.out.println("Today's estimated profits are " + FileUtils.profitCalculation() + "$");
                     break;
                 case "5":
                     System.out.println("Help");

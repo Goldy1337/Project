@@ -60,4 +60,19 @@ abstract public class FileUtils {
         return employees;
     }
 
+    public static float profitCalculation(){
+        float salary = 0;
+        float income = 0;
+        float expenses = 0;
+        float profit = 0;
+        for (String i : Main.employees.keySet()){
+            salary = salary - 10.2f;
+            expenses = salary;
+        }
+        for(Person visitor : Main.visitors){
+            income = income + visitor.profitCalculation();
+        }
+        profit = expenses - income;
+        return profit;
+    }
 }
