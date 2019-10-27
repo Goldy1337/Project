@@ -1,6 +1,8 @@
 package com.company;
 
-abstract class Animal {
+import java.io.Serializable;
+
+abstract class Animal implements Serializable {
     protected int age;
     protected String name;
     protected String animalType;

@@ -158,8 +158,9 @@ public class Main {
                 case "3":
                     System.out.println("Profit Calculations");
                     break;
-                case "4":
+                case "4": //TODO Make actual help menu, put readObjects elsewhere
                     System.out.println("Help");
+                    System.out.println(FileUtils.readFromAnimalList("animalList.dat"));
                     break;
                 case "5":
                     System.out.println("Exiting Program");
@@ -170,7 +171,7 @@ public class Main {
         }
     }
 
-    private static void addAnimal (String animalType){
+    private static void addAnimal (String animalType){ //TODO Fix overwriting issue?
         int age = 0;
         String userInput;
         if (animalType.equals("1")){
@@ -183,6 +184,7 @@ public class Main {
             System.out.println("Enter an ID for the goat");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newGoat);
+            FileUtils.writeToAnimalList(animals);
         }
         else if (animalType.equals("2")){
             System.out.println("Enter the sheep's age");
@@ -194,6 +196,7 @@ public class Main {
             System.out.println("Enter an ID for the sheep");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newSheep);
+            FileUtils.writeToAnimalList(animals);
         }
         else if (animalType.equals("3")){
             System.out.println("Enter the ducks age");
@@ -205,9 +208,10 @@ public class Main {
             System.out.println("Enter an ID for the duck");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newDuck);
+            FileUtils.writeToAnimalList(animals);
         }
     }
-    private static void addEmployee(){
+    private static void addEmployee(){ //TODO add write/read to file capability
         int age = 0;
         String userInput;
         System.out.println("Enter the employee's age");
