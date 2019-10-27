@@ -167,14 +167,15 @@ public class Main {
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Add new petting zoo visitor"); //TODO implement
+                                System.out.println("Add new petting zoo visitor");
+                                addVisitor();
                                 break;
                             case "2":
-                                System.out.println("Showing visitors"); //TODO Implement
+                                System.out.println("Showing visitors");
                                 for (Person visitor : visitors){
-
-                                    break;
+                                    System.out.println(visitor.getName() + ", age: " + visitor.getAge() + ".");
                                 }
+                                break;
                             case "3":
                                 System.out.println("In Visitor Admission you can register visitors.\n" +
                                         "Current admission prices:\n" +
@@ -258,6 +259,18 @@ public class Main {
         userInput = inputScanner.nextLine();
         employees.put(userInput, newEmployee);
         FileUtils.writeToEmployeeList(employees);
+    }
+
+    private static void addVisitor(){
+        int age = 0;
+        String userInput;
+        System.out.println("Enter visitor age");
+        userInput = inputScanner.nextLine();
+        age = Integer.parseInt(userInput);
+        System.out.println("Enter visitor name");
+        userInput = inputScanner.nextLine();
+        Visitor newVisitor = new Visitor(age, userInput);
+        visitors.add(newVisitor);
     }
 
     private static void readFromSavedFiles(){
