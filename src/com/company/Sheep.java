@@ -1,11 +1,7 @@
 package com.company;
 
 public class Sheep extends Animal{
-    protected final String typeOfAnimal = "sheep";
-    public Sheep(int age, String name) {
-        super(age, name);
-    }
-    public String getTypeOfAnimal() {
-        return typeOfAnimal;
+    public Sheep(int age, String name, String animalType) {
+        super(age, name, animalType);
     }
 }

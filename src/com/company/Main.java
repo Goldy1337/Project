@@ -170,7 +170,7 @@ public class Main {
         }
     }
 
-    static void addAnimal (String animalType){
+    private static void addAnimal (String animalType){
         int age = 0;
         String userInput;
         if (animalType.equals("1")){
@@ -179,7 +179,7 @@ public class Main {
             age = Integer.parseInt(userInput);
             System.out.println("Enter the goats name");
             userInput = inputScanner.nextLine();
-            Goat newGoat = new Goat(age, userInput);
+            Goat newGoat = new Goat(age, userInput, "goat");
             System.out.println("Enter an ID for the goat");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newGoat);
@@ -190,7 +190,7 @@ public class Main {
             age = Integer.parseInt(userInput);
             System.out.println("Enter the sheep's name");
             userInput = inputScanner.nextLine();
-            Sheep newSheep = new Sheep(age, userInput);
+            Sheep newSheep = new Sheep(age, userInput, "sheep");
             System.out.println("Enter an ID for the sheep");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newSheep);
@@ -201,13 +201,13 @@ public class Main {
             age = Integer.parseInt(userInput);
             System.out.println("Enter the ducks name");
             userInput = inputScanner.nextLine();
-            Duck newDuck = new Duck(age, userInput);
+            Duck newDuck = new Duck(age, userInput, "duck");
             System.out.println("Enter an ID for the duck");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newDuck);
         }
     }
-    static void addEmployee(){
+    private static void addEmployee(){
         int age = 0;
         String userInput;
         System.out.println("Enter the employee's age");

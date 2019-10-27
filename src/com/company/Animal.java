@@ -3,9 +3,11 @@ package com.company;
 abstract class Animal {
     protected int age;
     protected String name;
-    public Animal(int age, String name){
+    protected String animalType;
+    public Animal(int age, String name, String animalType){
         this.age = age;
         this.name = name;
+        this.animalType = animalType;
     }
 
     public int getAge() {
@@ -18,6 +20,6 @@ abstract class Animal {
 
     @Override
     public String toString() {
-        return name + " is a " + age + " year old " + "[INSERT ANIMAL TYPE HERE]" + ".";
+        return name + " is a " + age + " year old " + animalType + ".";
     }
 }
