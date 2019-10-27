@@ -10,6 +10,8 @@ abstract class Person implements Serializable {
         this.name = name;
     }
 
+    public abstract float profitCalculation();
+
     public int getAge() {
         return age;
     }

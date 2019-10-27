@@ -9,10 +9,10 @@ public class Main {
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
     static HashMap<String, Animal> animals = new HashMap<>();
-    //static ArrayList<Animal> animals = new ArrayList<>();
     static HashMap<String, Person> employees = new HashMap<>();
-    //static ArrayList<Employee> employees = new ArrayList<>();
     static ArrayList<Visitor> visitors = new ArrayList<>();
+    static float profit = 0;
+    static float expenses = 0;
 
     public static void main(String[] args) {
         readFromSavedFiles();
@@ -20,14 +20,14 @@ public class Main {
     }
 
     private static void MainMenu(){
-        while (!menuChoice.equals("6")){
+        while (!menuChoice.equals("9")){
             System.out.println("Welcome to Lush Acres Petting Zoo, please choose your option below\n" +
                     "1. Animal administration\n" +
                     "2. Employee Administration\n" +
                     "3. Visitor Admission\n" +
                     "4. Profit calculations\n" +
                     "5. Help\n" +
-                    "6. Exit");
+                    "9. Exit");
             menuChoice = inputScanner.nextLine();
             switch (menuChoice){
                 case "1":
@@ -192,12 +192,23 @@ public class Main {
                     }
                     break;
                 case "4":
-                    System.out.println("Profit Calculations");
+                    System.out.println("Calculating todays profit");
+                    float salary = 0;
+                    float income = 0;
+                    for (String i : employees.keySet()){
+                        salary = salary - 10.2f;
+                        expenses = salary;
+                    }
+                    for (Person visitor : visitors){
+                       income = income + visitor.profitCalculation();
+                       profit = income + expenses; //TODO Finslipa lite
+                    }
+                    System.out.println("Todays estimated profits are " + (profit) + "$");
                     break;
                 case "5":
                     System.out.println("Help");
                     break;
-                case "6":
+                case "9":
                     System.out.println("Exiting Program");
                     break;
                 default:
