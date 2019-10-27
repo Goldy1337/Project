@@ -51,23 +51,23 @@ public class Main {
                                     addAnimal(menuChoice);
                                 }
                                 else
-                                    System.out.println("Invalid input.");
+                                    System.out.println("Invalid input.\n");
                                 break;
                             case "2":
                                 System.out.println("Enter animal ID to retire it from the petting zoo");
                                 menuChoice = inputScanner.nextLine();
                                 if (animals.containsKey(menuChoice)) {
                                     animals.remove(menuChoice);
-                                    System.out.println("Removing animal from database");
+                                    System.out.println("Removing animal from database\n");
                                     FileUtils.writeToAnimalList(animals);
                                     break;
                                 }
                                 else if (!animals.containsKey(menuChoice)){
-                                    System.out.println("Animal ID not found");
+                                    System.out.println("Animal ID not found\n");
                                     break;
                                 }
                             case "3":
-                                System.out.println("Showing all current animals");
+                                System.out.println("Showing all current animals\n");
                                 for (String i : animals.keySet()){
                                     System.out.println("ID: " + i + ", " + animals.get(i).toString());
                                 }
@@ -86,14 +86,14 @@ public class Main {
                             case "5":
                                 System.out.println("In the Animal Administration menu you can:\n" +
                                         "Add or retire animals to/from the petting zoo,\n" +
-                                        "show all the current animals\n" +
-                                        "or a specific animal currently in the petting zoo.");
+                                        "show all the current animals or\n" +
+                                        "show a specific animal currently in the petting zoo.\n");
                                 break;
                             case "6":
-                                System.out.println("Returning to main menu");
+                                System.out.println("Returning to main menu\n");
                                 break;
                             default:
-                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
                         }
                     }
                     break;
@@ -109,7 +109,6 @@ public class Main {
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Add new employee to the petting zoo staff");
                                 addEmployee();
                                 break;
                             case "2":
@@ -117,15 +116,15 @@ public class Main {
                                 menuChoice = inputScanner.nextLine();
                                 if (employees.containsKey(menuChoice)) {
                                     employees.remove(menuChoice);
-                                    System.out.println("Removing employee from database");
+                                    System.out.println("Removing employee from database\n");
                                     break;
                                 }
                                 else if (!employees.containsKey(menuChoice)){
-                                    System.out.println("Employee ID not found");
+                                    System.out.println("Employee ID not found\n");
                                     break;
                                 }
                             case "3":
-                                System.out.println("Showing all current employees");
+                                System.out.println("Showing all current employees\n");
                                 for (String i : employees.keySet()){
                                     System.out.println("ID: " + i + ", " + employees.get(i).toString());
                                 }
@@ -138,20 +137,20 @@ public class Main {
                                     break;
                                 }
                                 else if (!employees.containsKey(menuChoice)){
-                                    System.out.println("Employee ID not found");
+                                    System.out.println("Employee ID not found\n");
                                     break;
                                 }
                             case "5":
                                 System.out.println("In the Employee Administration menu you can:\n" +
                                         "Add hired or retire employees to/from the petting zoo staff,\n" +
-                                        "show all the current employees\n" +
-                                        "or a specific employee currently working in the petting zoo.");
+                                        "show all the current employees or\n" +
+                                        "show a specific employee working in the petting zoo.\n");
                                 break;
                             case "6":
-                                System.out.println("Returning to main menu");
+                                System.out.println("Returning to main menu\n");
                                 break;
                             default:
-                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
                         }
                     }
                     break;
@@ -165,41 +164,42 @@ public class Main {
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
-                                System.out.println("Add new petting zoo visitor");
+                                System.out.println("Add new petting zoo visitor\n");
                                 addVisitor();
                                 break;
                             case "2":
-                                System.out.println("Showing visitors");
+                                System.out.println("Showing visitors\n");
                                 for (Person visitor : visitors){
-                                    System.out.println(visitor.getName() + ", age: " + visitor.getAge() + ".");
+                                    System.out.println(visitor.getName() + ", age: " + visitor.getAge() + ".\n");
                                 }
                                 break;
                             case "3":
-                                System.out.println("In Visitor Admission you can register visitors.\n" +
+                                System.out.println("In Visitor Admission you can register and show registered visitors\n" +
+                                        "\n" +
                                         "Current admission prices:\n" +
                                         "Age 8 and under, free admission\n" +
                                         "Ages 9-18, 3,6$\n" +
-                                        "Ages 19 and above, 8,9$.");
+                                        "Ages 19 and above, 8,9$.\n");
                                 break;
                             case "4":
-                                System.out.println("Returning to main menu");
+                                System.out.println("Returning to main menu\n");
                                 break;
                             default:
-                                System.out.println("Choose your option by entering the corresponding number and pressing enter");
+                                System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
                         }
                     }
                     break;
                 case "4":
-                    System.out.println("Today's estimated profits are " + FileUtils.profitCalculation() + "$");
+                    System.out.println("Today's estimated profits are " + FileUtils.profitCalculation() + "$\n");
                     break;
                 case "5":
                     System.out.println("Help");
                     break;
                 case "9":
-                    System.out.println("Exiting Program");
+                    System.out.println("Exiting Program\n");
                     break;
                 default:
-                    System.out.println("Choose your option by entering the corresponding number and pressing enter");
+                    System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
             }
         }
     }
@@ -208,52 +208,53 @@ public class Main {
         int age = 0;
         String userInput;
         if (animalType.equals("1")){
-            System.out.println("Enter the goats age");
+            System.out.println("Enter the new goats age");
             userInput = inputScanner.nextLine();
             age = Integer.parseInt(userInput);
-            System.out.println("Enter the goats name");
+            System.out.println("Enter the new goats name");
             userInput = inputScanner.nextLine();
             Goat newGoat = new Goat(age, userInput, "goat");
-            System.out.println("Enter an ID for the goat");
+            System.out.println("Enter an ID for the new goat");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newGoat);
             FileUtils.writeToAnimalList(animals);
         }
         else if (animalType.equals("2")){
-            System.out.println("Enter the sheep's age");
+            System.out.println("Enter the new sheep's age");
             userInput = inputScanner.nextLine();
             age = Integer.parseInt(userInput);
-            System.out.println("Enter the sheep's name");
+            System.out.println("Enter the new sheep's name");
             userInput = inputScanner.nextLine();
             Sheep newSheep = new Sheep(age, userInput, "sheep");
-            System.out.println("Enter an ID for the sheep");
+            System.out.println("Enter an ID for the new sheep");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newSheep);
             FileUtils.writeToAnimalList(animals);
         }
         else if (animalType.equals("3")){
-            System.out.println("Enter the ducks age");
+            System.out.println("Enter the new ducks age");
             userInput = inputScanner.nextLine();
             age = Integer.parseInt(userInput);
-            System.out.println("Enter the ducks name");
+            System.out.println("Enter the new ducks name");
             userInput = inputScanner.nextLine();
             Duck newDuck = new Duck(age, userInput, "duck");
-            System.out.println("Enter an ID for the duck");
+            System.out.println("Enter an ID for the new duck");
             userInput = inputScanner.nextLine();
             animals.put(userInput, newDuck);
             FileUtils.writeToAnimalList(animals);
         }
     }
+
     private static void addEmployee(){
         int age = 0;
         String userInput;
-        System.out.println("Enter the employee's age");
+        System.out.println("Enter the new employee's age");
         userInput = inputScanner.nextLine();
         age = Integer.parseInt(userInput);
-        System.out.println("Enter the employee's name");
+        System.out.println("Enter the new employee's name");
         userInput = inputScanner.nextLine();
         Employee newEmployee = new Employee(age, userInput);
-        System.out.println("Enter an ID for the employee");
+        System.out.println("Enter an ID for the new employee");
         userInput = inputScanner.nextLine();
         employees.put(userInput, newEmployee);
         FileUtils.writeToEmployeeList(employees);

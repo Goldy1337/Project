@@ -72,7 +72,7 @@ abstract public class FileUtils {
         for(Person visitor : Main.visitors){
             income = income + visitor.profitCalculation();
         }
-        profit = expenses - income;
+        profit = expenses + income;
         return profit;
     }
 }
