@@ -54,9 +54,15 @@ public class Main {
                             case "2":
                                 System.out.println("Enter animal ID to retire it from the petting zoo");
                                 menuChoice = inputScanner.nextLine();
-                                animals.remove(menuChoice);
-                                System.out.println("Removing animal from database");
-                                break;
+                                if (animals.containsKey(menuChoice)) {
+                                    animals.remove(menuChoice);
+                                    System.out.println("Removing animal from database");
+                                    break;
+                                }
+                                else if (!animals.containsKey(menuChoice)){
+                                    System.out.println("Animal ID not found");
+                                    break;
+                                }
                             case "3":
                                 System.out.println("Showing all current animals");
                                 for (String i : animals.keySet()){
@@ -66,9 +72,16 @@ public class Main {
                             case "4":
                                 System.out.println("Enter ID for the animal");
                                 menuChoice = inputScanner.nextLine();
-                                System.out.println("Showing specified animal");
-                                System.out.println(animals.get(menuChoice));;
-                                break;
+                                if (animals.containsKey(menuChoice)) {
+                                    System.out.println("Showing specified animal");
+                                    System.out.println(animals.get(menuChoice));
+                                    ;
+                                    break;
+                                }
+                                else if (!animals.containsKey(menuChoice)){
+                                    System.out.println("Animal ID not found");
+                                    break;
+                                }
                             case "5":
                                 System.out.println("In the Animal Administration menu you can:\n" +
                                         "Add or retire animals to/from the petting zoo,\n" +
@@ -101,9 +114,15 @@ public class Main {
                             case "2":
                                 System.out.println("Enter employee ID to retire them from the petting zoo staff");
                                 menuChoice = inputScanner.nextLine();
-                                employees.remove(menuChoice);
-                                System.out.println("Removing employee from database");
-                                break;
+                                if (employees.containsKey(menuChoice)) {
+                                    employees.remove(menuChoice);
+                                    System.out.println("Removing employee from database");
+                                    break;
+                                }
+                                else if (!employees.containsKey(menuChoice)){
+                                    System.out.println("Employee ID not found");
+                                    break;
+                                }
                             case "3":
                                 System.out.println("Showing all current employees");
                                 for (String i : employees.keySet()){
@@ -113,9 +132,15 @@ public class Main {
                             case "4":
                                 System.out.println("Enter ID for the employee");
                                 menuChoice = inputScanner.nextLine();
-                                System.out.println("Showing specified employee");
-                                System.out.println(employees.get(menuChoice));
-                                break;
+                                if (employees.containsKey(menuChoice)){
+                                    System.out.println("Showing specified employee");
+                                    System.out.println(employees.get(menuChoice));
+                                    break;
+                                }
+                                else if (!employees.containsKey(menuChoice)){
+                                    System.out.println("Employee ID not found");
+                                    break;
+                                }
                             case "5":
                                 System.out.println("In the Employee Administration menu you can:\n" +
                                         "Add hired or retire employees to/from the petting zoo staff,\n" +
