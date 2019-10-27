@@ -15,6 +15,7 @@ public class Main {
     static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
+        animals = FileUtils.readFromAnimalList("animalList.dat");
         MainMenu();
     }
 
@@ -57,6 +58,7 @@ public class Main {
                                 if (animals.containsKey(menuChoice)) {
                                     animals.remove(menuChoice);
                                     System.out.println("Removing animal from database");
+                                    FileUtils.writeToAnimalList(animals);
                                     break;
                                 }
                                 else if (!animals.containsKey(menuChoice)){
