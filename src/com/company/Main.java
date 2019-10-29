@@ -14,10 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
         readFromSavedRegistries();
-        EmployeeNotes employeeNotes1 = new EmployeeNotes("Bob is great");
-        EmployeeNotes employeeNotes2 = new EmployeeNotes("Bob is somtimes great...");
-        employees.get("B").employeeNotesList.add(employeeNotes1);
-        employees.get("B").employeeNotesList.add(employeeNotes2);
         MainMenu();
     }
 
@@ -156,6 +152,7 @@ public class Main {
                                             menuChoice = inputScanner.nextLine();
                                             if (employees.containsKey(menuChoice)) {
                                                 employees.get(menuChoice).getEmpoyeeNoteList();
+                                                System.out.println("");
                                                 break;
                                             }
                                             else if (!employees.containsKey(menuChoice)) {
@@ -163,7 +160,13 @@ public class Main {
                                                 break;
                                             }
                                         case "2":
-                                            System.out.println("Placeholder");
+                                            System.out.println("Add note");
+                                            menuChoice = inputScanner.nextLine();
+                                            EmployeeNotes employeeNote = new EmployeeNotes(menuChoice);
+                                            System.out.println("Enter employee ID to attach note");
+                                            menuChoice = inputScanner.nextLine();
+                                            employees.get(menuChoice).employeeNotesList.add(employeeNote);
+                                            FileUtils.writeToEmployeeList(employees);
                                             break;
                                         case "3":
                                             System.out.println("Placeholder");
@@ -171,6 +174,8 @@ public class Main {
                                         case "4":
                                             System.out.println("Returning to Employee Administration\n");
                                             break;
+                                        default:
+                                            System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
                                     }
                                 }
                             case "6":
