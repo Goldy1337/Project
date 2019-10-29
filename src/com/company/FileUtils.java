@@ -34,7 +34,7 @@ abstract public class FileUtils {
         return animals;
     }
 
-    public static void writeToEmployeeList(HashMap<String, Person> employees){
+    public static void writeToEmployeeList(HashMap<String, Employee> employees){
         ObjectOutputStream objectOutputStream = null;
         FileOutputStream fileOutputStream = null;
         try{
@@ -47,13 +47,13 @@ abstract public class FileUtils {
         }
     }
 
-    public static HashMap<String, Person> readFromEmployeeList(String fileName){
+    public static HashMap<String, Employee> readFromEmployeeList(String fileName){
         ObjectInputStream objectinputstream = null;
-        HashMap<String, Person> employees = new HashMap<>();
+        HashMap<String, Employee> employees = new HashMap<>();
         try {
             FileInputStream streamIn = new FileInputStream(fileName);
             objectinputstream = new ObjectInputStream(streamIn);
-            employees = (HashMap<String, Person>) objectinputstream.readObject();
+            employees = (HashMap<String, Employee>) objectinputstream.readObject();
             objectinputstream .close();
         } catch (Exception e) {
         }

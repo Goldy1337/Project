@@ -9,11 +9,15 @@ public class Main {
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
     private static HashMap<String, Animal> animals = new HashMap<>();
-    static HashMap<String, Person> employees = new HashMap<>();
+    static HashMap<String, Employee> employees = new HashMap<>();
     static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
         readFromSavedRegistries();
+        EmployeeNotes employeeNotes1 = new EmployeeNotes("Bob is great");
+        EmployeeNotes employeeNotes2 = new EmployeeNotes("Bob is somtimes great...");
+        employees.get("B").employeeNotesList.add(employeeNotes1);
+        employees.get("B").employeeNotesList.add(employeeNotes2);
         MainMenu();
     }
 
@@ -96,7 +100,7 @@ public class Main {
                     }
                     break;
                 case "2":
-                    while (!menuChoice.equals("6")){
+                    while (!menuChoice.equals("7")){
                         System.out.println("Lush Acres Employee Administration\n" +
                                 "1. Add new employee to the petting zoo staff\n" +
                                 "2. Retire employee from the petting zoo staff\n" +
@@ -140,30 +144,34 @@ public class Main {
                                     break;
                                 }
                             case "5":
-                                System.out.println("Enter ID for the employee");
-                                menuChoice = inputScanner.nextLine();
-                                if (employees.containsKey(menuChoice)){
-                                    while (!menuChoice.equals("4")){
-                                        System.out.println("1. Show notes\n" +
-                                                "2. Add note\n" +
-                                                "3. Remove note");
-                                        menuChoice = inputScanner.nextLine();
-                                        switch (menuChoice){
-                                            case "1":
-                                                System.out.println(); //TODO print notes
-                                            case "2":
-                                                //TODO add note
-                                            case "3":
-                                                //TODO remove note
-                                            case "4":
+                                while (!menuChoice.equals("4")) { //TODO Undvik att "4" aktiverar övermenyn efter utgång
+                                    System.out.println("1. View employee notes\n" +
+                                            "2. Add employee notes\n" +
+                                            "3. Remove employee notes\n" +
+                                            "4. Back to Employee Administration");
+                                    menuChoice = inputScanner.nextLine();
+                                    switch (menuChoice) {
+                                        case "1":
+                                            System.out.println("Enter employee ID");
+                                            menuChoice = inputScanner.nextLine();
+                                            if (employees.containsKey(menuChoice)) {
+                                                employees.get(menuChoice).getEmpoyeeNoteList();
                                                 break;
-                                        }
+                                            }
+                                            else if (!employees.containsKey(menuChoice)) {
+                                                System.out.println("Employee ID not found\n");
+                                                break;
+                                            }
+                                        case "2":
+                                            System.out.println("Placeholder");
+                                            break;
+                                        case "3":
+                                            System.out.println("Placeholder");
+                                            break;
+                                        case "4":
+                                            System.out.println("Returning to Employee Administration\n");
+                                            break;
                                     }
-                                    break;
-                                }
-                                else if (!employees.containsKey(menuChoice)){
-                                    System.out.println("Employee ID not found\n");
-                                    break;
                                 }
                             case "6":
                                 System.out.println("In the Employee Administration menu you can:\n" +

@@ -9,7 +9,11 @@ public class Employee extends Person{
         super(age, name);
     }
 
-
+    public void getEmpoyeeNoteList(){
+        for (EmployeeNotes noteList : employeeNotesList){
+            System.out.println(noteList.getNote());
+        }
+    }
 
     @Override
     public float profitCalculation() {
