@@ -102,7 +102,7 @@ public class Main {
                                 "2. Retire employee from the petting zoo staff\n" +
                                 "3. Show all current employees\n" +
                                 "4. Show specific employee\n" +
-                                "5. Manage empoyee notes\n" +
+                                "5. Manage employee notes\n" +
                                 "6. Help\n" +
                                 "7. Return to main menu");
                         menuChoice = inputScanner.nextLine();
@@ -126,6 +126,7 @@ public class Main {
                                 System.out.println("Showing all current employees\n");
                                 for (String i : employees.keySet()){
                                     System.out.println("ID: " + i + ", " + employees.get(i).toString());
+                                    System.out.println("");
                                 }
                                 break;
                             case "4":
@@ -140,8 +141,43 @@ public class Main {
                                     break;
                                 }
                             case "5":
-                                while (!menuChoice.equals("4")) { //TODO Undvik att "4" aktiverar övermenyn efter utgång
-                                    System.out.println("1. View employee notes\n" +
+                                while (!menuChoice.equals("3")) {
+                                    System.out.println("Enter employee ID");
+                                    menuChoice = inputScanner.nextLine();
+                                    if (employees.containsKey(menuChoice)) {
+                                        employees.get(menuChoice).getEmpoyeeNoteList();
+                                        System.out.println("");
+                                        System.out.println("1. Add note\n" +
+                                                "2. Remove note\n" +
+                                                "3. Return to Employee Administration");
+                                        String employeeHolder = menuChoice;
+                                        menuChoice = inputScanner.nextLine();
+                                        switch (menuChoice){
+                                            case "1":
+                                                System.out.println("Add note");
+                                                menuChoice = inputScanner.nextLine();
+                                                EmployeeNotes employeeNote = new EmployeeNotes(menuChoice);
+                                                System.out.println("Enter employee ID to attach note");
+                                                menuChoice = inputScanner.nextLine();
+                                                employees.get(menuChoice).employeeNotesList.add(employeeNote);
+                                                FileUtils.writeToEmployeeList(employees);
+                                                break;
+                                            case "2":
+                                                System.out.println("Enter number of note to remove");
+                                                menuChoice = inputScanner.nextLine();
+                                                employees.get(employeeHolder).employeeNotesList.remove(Integer.parseInt(menuChoice));
+                                                System.out.println("Removing note #" + menuChoice + "\n");
+                                                break;
+                                            case "3":
+                                                System.out.println("Returning to Employee Administration\n");
+                                        }
+                                        break;
+                                    }
+                                    else if (!employees.containsKey(menuChoice)) {
+                                        System.out.println("Employee ID not found\n");
+                                        break;
+                                    }
+                                    /*System.out.println("1. View employee notes\n" +
                                             "2. Add employee notes\n" +
                                             "3. Remove employee notes\n" +
                                             "4. Back to Employee Administration");
@@ -169,15 +205,18 @@ public class Main {
                                             FileUtils.writeToEmployeeList(employees);
                                             break;
                                         case "3":
-                                            System.out.println("Placeholder");
+                                            System.out.println("Enter employee ID");
+                                            menuChoice = inputScanner.nextLine();
+                                            employees.get(menuChoice).employeeNotesList.remove()
                                             break;
                                         case "4":
                                             System.out.println("Returning to Employee Administration\n");
                                             break;
                                         default:
                                             System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
-                                    }
+                                    }*/
                                 }
+                                break;
                             case "6":
                                 System.out.println("In the Employee Administration menu you can:\n" +
                                         "Add hired or retire employees to/from the petting zoo staff,\n" +

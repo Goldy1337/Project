@@ -10,9 +10,20 @@ public class Employee extends Person{
     }
 
     public void getEmpoyeeNoteList(){
+        int i = 1;
         for (EmployeeNotes noteList : employeeNotesList){
-            System.out.println(noteList.getNote());
+            System.out.println("#" + i + ": " + noteList.getNote());
+            i++;
         }
+    }
+
+    public void removeEmployeeNote(int i){
+        i = i - 1;
+        if (employeeNotesList.contains(employeeNotesList.get(i))){
+            employeeNotesList.remove(i);
+        }
+        else
+            System.out.println("No note found with that number");
     }
 
     @Override
