@@ -1,10 +1,15 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Employee extends Person{
     private float daySalary = 10.2f;
+    public ArrayList<EmployeeNotes> employeeNotesList = new ArrayList<>();
     public Employee(int age, String name) {
         super(age, name);
     }
+
+
 
     @Override
     public float profitCalculation() {

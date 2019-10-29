@@ -102,8 +102,9 @@ public class Main {
                                 "2. Retire employee from the petting zoo staff\n" +
                                 "3. Show all current employees\n" +
                                 "4. Show specific employee\n" +
-                                "5. Help\n" +
-                                "6. Return to main menu");
+                                "5. Manage empoyee notes\n" +
+                                "6. Help\n" +
+                                "7. Return to main menu");
                         menuChoice = inputScanner.nextLine();
                         switch (menuChoice){
                             case "1":
@@ -139,12 +140,39 @@ public class Main {
                                     break;
                                 }
                             case "5":
+                                System.out.println("Enter ID for the employee");
+                                menuChoice = inputScanner.nextLine();
+                                if (employees.containsKey(menuChoice)){
+                                    while (!menuChoice.equals("4")){
+                                        System.out.println("1. Show notes\n" +
+                                                "2. Add note\n" +
+                                                "3. Remove note");
+                                        menuChoice = inputScanner.nextLine();
+                                        switch (menuChoice){
+                                            case "1":
+                                                System.out.println(); //TODO print notes
+                                            case "2":
+                                                //TODO add note
+                                            case "3":
+                                                //TODO remove note
+                                            case "4":
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                }
+                                else if (!employees.containsKey(menuChoice)){
+                                    System.out.println("Employee ID not found\n");
+                                    break;
+                                }
+                            case "6":
                                 System.out.println("In the Employee Administration menu you can:\n" +
                                         "Add hired or retire employees to/from the petting zoo staff,\n" +
                                         "show all the current employees or\n" +
-                                        "show a specific employee working in the petting zoo.\n");
+                                        "show a specific employee working in the petting zoo" +
+                                        "and add notes to employees.\n");
                                 break;
-                            case "6":
+                            case "7":
                                 System.out.println("Returning to main menu\n");
                                 break;
                             default:
