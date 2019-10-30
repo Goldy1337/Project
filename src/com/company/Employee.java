@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-//TODO Do JavaDoc for this class
 
 /**
  * <h1>Employee class</h1>
