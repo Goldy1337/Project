@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
-
+//TODO Do JavaDoc for this class
 public class Employee extends Person{
     private float daySalary = 10.2f;
     public ArrayList<EmployeeNotes> employeeNotesList = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Employee extends Person{
         i = i - 1;
         try {
             employeeNotesList.remove(i);
-            System.out.println("Removing note #" + i + "\n");
+            System.out.println("Removing note #" + i + "\n"); //TODO Skriv ut rätt tal
         }
         catch (Exception e) {
             System.out.println("Note not found, returning to menu\n");;

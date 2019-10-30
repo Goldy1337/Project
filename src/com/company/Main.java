@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-
-    private static Scanner inputScanner = new Scanner(System.in);
+    //TODO, dokumentation, UML, JAR-fil, implementera huvudhjälpmenyn
+    private static Scanner inputScanner = new Scanner(System.in); //TODO Ny klass som håller alla listor
     private static String menuChoice = "";
     private static HashMap<String, Animal> animals = new HashMap<>();
     static HashMap<String, Employee> employees = new HashMap<>();
