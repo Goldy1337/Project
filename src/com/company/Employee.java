@@ -26,6 +26,7 @@ public class Employee extends Person{
         i = i - 1;
         try {
             employeeNotesList.remove(i);
+            i = i + 1;
             System.out.println("Removing note #" + i + "\n"); //TODO Skriv ut rätt tal
         }
         catch (Exception e) {

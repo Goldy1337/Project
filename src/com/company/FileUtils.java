@@ -65,11 +65,11 @@ abstract public class FileUtils {
         float income = 0;
         float expenses = 0;
         float profit = 0;
-        for (String i : Main.employees.keySet()){
+        for (String i : PettingZoo.employees.keySet()){
             salary = salary - 10.2f;
             expenses = salary;
         }
-        for(Person visitor : Main.visitors){
+        for(Person visitor : PettingZoo.visitors){
             income = income + visitor.profitCalculation();
         }
         profit = expenses + income;

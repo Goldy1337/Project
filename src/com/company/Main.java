@@ -1,16 +1,11 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    //TODO, dokumentation, UML, JAR-fil, implementera huvudhjälpmenyn
+    //TODO, dokumentation, UML, JAR-fil
     private static Scanner inputScanner = new Scanner(System.in); //TODO Ny klass som håller alla listor
     private static String menuChoice = "";
-    private static HashMap<String, Animal> animals = new HashMap<>();
-    static HashMap<String, Employee> employees = new HashMap<>();
-    static ArrayList<Visitor> visitors = new ArrayList<>();
 
     public static void main(String[] args) {
         readFromSavedRegistries();
@@ -54,30 +49,30 @@ public class Main {
                             case "2":
                                 System.out.println("Enter animal ID to retire it from the petting zoo");
                                 menuChoice = inputScanner.nextLine();
-                                if (animals.containsKey(menuChoice)) {
-                                    animals.remove(menuChoice);
+                                if (PettingZoo.animals.containsKey(menuChoice)) {
+                                    PettingZoo.animals.remove(menuChoice);
                                     System.out.println("Removing animal from database\n");
-                                    FileUtils.writeToAnimalList(animals);
+                                    FileUtils.writeToAnimalList(PettingZoo.animals);
                                     break;
                                 }
-                                else if (!animals.containsKey(menuChoice)){
+                                else if (!PettingZoo.animals.containsKey(menuChoice)){
                                     System.out.println("Animal ID not found\n");
                                     break;
                                 }
                             case "3":
                                 System.out.println("Showing all current animals\n");
-                                for (String i : animals.keySet()){
-                                    System.out.println("ID: " + i + ", " + animals.get(i).toString() + "\n");
+                                for (String i : PettingZoo.animals.keySet()){
+                                    System.out.println("ID: " + i + ", " + PettingZoo.animals.get(i).toString() + "\n");
                                 }
                                 break;
                             case "4":
                                 System.out.println("Enter ID for the animal");
                                 menuChoice = inputScanner.nextLine();
-                                if (animals.containsKey(menuChoice)) {
-                                    System.out.println(animals.get(menuChoice) + "\n");
+                                if (PettingZoo.animals.containsKey(menuChoice)) {
+                                    System.out.println(PettingZoo.animals.get(menuChoice) + "\n");
                                     break;
                                 }
-                                else if (!animals.containsKey(menuChoice)){
+                                else if (!PettingZoo.animals.containsKey(menuChoice)){
                                     System.out.println("Animal ID not found\n");
                                     break;
                                 }
@@ -113,29 +108,30 @@ public class Main {
                             case "2":
                                 System.out.println("Enter employee ID to retire them from the petting zoo staff");
                                 menuChoice = inputScanner.nextLine();
-                                if (employees.containsKey(menuChoice)) {
-                                    employees.remove(menuChoice);
+                                if (PettingZoo.employees.containsKey(menuChoice)) {
+                                    PettingZoo.employees.remove(menuChoice);
                                     System.out.println("Removing employee from database\n");
+                                    FileUtils.writeToEmployeeList(PettingZoo.employees);
                                     break;
                                 }
-                                else if (!employees.containsKey(menuChoice)){
+                                else if (!PettingZoo.employees.containsKey(menuChoice)){
                                     System.out.println("Employee ID not found\n");
                                     break;
                                 }
                             case "3":
                                 System.out.println("Showing all current employees\n");
-                                for (String i : employees.keySet()){
-                                    System.out.println("ID: " + i + ", " + employees.get(i).toString() + "\n");
+                                for (String i : PettingZoo.employees.keySet()){
+                                    System.out.println("ID: " + i + ", " + PettingZoo.employees.get(i).toString() + "\n");
                                 }
                                 break;
                             case "4":
                                 System.out.println("Enter ID for the employee");
                                 menuChoice = inputScanner.nextLine();
-                                if (employees.containsKey(menuChoice)){
-                                    System.out.println(employees.get(menuChoice) + "\n");
+                                if (PettingZoo.employees.containsKey(menuChoice)){
+                                    System.out.println(PettingZoo.employees.get(menuChoice) + "\n");
                                     break;
                                 }
-                                else if (!employees.containsKey(menuChoice)){
+                                else if (!PettingZoo.employees.containsKey(menuChoice)){
                                     System.out.println("Employee ID not found\n");
                                     break;
                                 }
@@ -143,8 +139,8 @@ public class Main {
                                 while (!menuChoice.equals("3")) {
                                     System.out.println("Enter employee ID");
                                     menuChoice = inputScanner.nextLine();
-                                    if (employees.containsKey(menuChoice)) {
-                                        employees.get(menuChoice).getEmpoyeeNoteList();
+                                    if (PettingZoo.employees.containsKey(menuChoice)) {
+                                        PettingZoo.employees.get(menuChoice).getEmpoyeeNoteList();
                                         System.out.println("");
                                         System.out.println("1. Add note\n" +
                                                 "2. Remove note\n" +
@@ -156,14 +152,14 @@ public class Main {
                                                 System.out.println("Add note");
                                                 menuChoice = inputScanner.nextLine();
                                                 EmployeeNotes employeeNote = new EmployeeNotes(menuChoice);
-                                                employees.get(employeeHolder).employeeNotesList.add(employeeNote);
-                                                FileUtils.writeToEmployeeList(employees);
+                                                PettingZoo.employees.get(employeeHolder).employeeNotesList.add(employeeNote);
+                                                FileUtils.writeToEmployeeList(PettingZoo.employees);
                                                 break;
                                             case "2":
                                                 System.out.println("Enter number of note to remove");
                                                 menuChoice = inputScanner.nextLine();
                                                 try {
-                                                    employees.get(employeeHolder).removeEmployeeNote(Integer.parseInt(menuChoice));
+                                                    PettingZoo.employees.get(employeeHolder).removeEmployeeNote(Integer.parseInt(menuChoice));
                                                 } catch (Exception e) {
                                                     System.out.println("Invalid input, returning to menu\n");
                                                 }
@@ -173,7 +169,7 @@ public class Main {
                                         }
                                         break;
                                     }
-                                    else if (!employees.containsKey(menuChoice)) {
+                                    else if (!PettingZoo.employees.containsKey(menuChoice)) {
                                         System.out.println("Employee ID not found\n");
                                         break;
                                     }
@@ -209,7 +205,7 @@ public class Main {
                                 break;
                             case "2":
                                 System.out.println("Showing visitors\n");
-                                for (Person visitor : visitors){
+                                for (Person visitor : PettingZoo.visitors){
                                     System.out.println(visitor.getName() + ", age: " + visitor.getAge() + ".\n");
                                 }
                                 break;
@@ -233,7 +229,8 @@ public class Main {
                     System.out.println("Today's estimated profits are " + FileUtils.profitCalculation() + "$\n");
                     break;
                 case "5":
-                    System.out.println("Help");
+                    System.out.println("This program will help you manage animals, employees and register visitors.\n" +
+                            "To navigate the menu enter the number of the option you wish to select and press enter.\n");
                     break;
                 case "9":
                     System.out.println("Exiting Program\n");
@@ -257,8 +254,8 @@ public class Main {
                 Goat newGoat = new Goat(age, userInput, "goat");
                 System.out.println("Enter an ID for the new goat");
                 userInput = inputScanner.nextLine();
-                animals.put(userInput, newGoat);
-                FileUtils.writeToAnimalList(animals);
+                PettingZoo.animals.put(userInput, newGoat);
+                FileUtils.writeToAnimalList(PettingZoo.animals);
             }
             catch (Exception e) {
                 System.out.println("Invalid input, returning to menu\n");
@@ -274,8 +271,8 @@ public class Main {
                 Sheep newSheep = new Sheep(age, userInput, "sheep");
                 System.out.println("Enter an ID for the new sheep");
                 userInput = inputScanner.nextLine();
-                animals.put(userInput, newSheep);
-                FileUtils.writeToAnimalList(animals);
+                PettingZoo.animals.put(userInput, newSheep);
+                FileUtils.writeToAnimalList(PettingZoo.animals);
             } catch (Exception e) {
                 System.out.println("Invalid input, returning to menu\n");
             }
@@ -290,8 +287,8 @@ public class Main {
                 Duck newDuck = new Duck(age, userInput, "duck");
                 System.out.println("Enter an ID for the new duck");
                 userInput = inputScanner.nextLine();
-                animals.put(userInput, newDuck);
-                FileUtils.writeToAnimalList(animals);
+                PettingZoo.animals.put(userInput, newDuck);
+                FileUtils.writeToAnimalList(PettingZoo.animals);
             }
             catch (Exception e) {
                 System.out.println("Invalid input, returning to menu\n");
@@ -311,8 +308,8 @@ public class Main {
             Employee newEmployee = new Employee(age, userInput);
             System.out.println("Enter an ID for the new employee");
             userInput = inputScanner.nextLine();
-            employees.put(userInput, newEmployee);
-            FileUtils.writeToEmployeeList(employees);
+            PettingZoo.employees.put(userInput, newEmployee);
+            FileUtils.writeToEmployeeList(PettingZoo.employees);
         }
         catch (Exception e) {
             System.out.println("Invalid input, returning to menu\n");
@@ -329,7 +326,7 @@ public class Main {
             System.out.println("Enter visitor name");
             userInput = inputScanner.nextLine();
             Visitor newVisitor = new Visitor(age, userInput);
-            visitors.add(newVisitor);
+            PettingZoo.visitors.add(newVisitor);
         }
         catch (NumberFormatException e) {
             System.out.println("Invalid input, returning to menu\n");
@@ -337,7 +334,7 @@ public class Main {
     }
 
     private static void readFromSavedRegistries(){
-        animals = FileUtils.readFromAnimalList("animalList.dat");
-        employees = FileUtils.readFromEmployeeList("employeeList.dat");
+        PettingZoo.animals = FileUtils.readFromAnimalList("animalList.dat");
+        PettingZoo.employees = FileUtils.readFromEmployeeList("employeeList.dat");
     }
 }
