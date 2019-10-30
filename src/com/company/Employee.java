@@ -20,7 +20,7 @@ public class Employee extends Person{
      */
     public ArrayList<EmployeeNotes> employeeNotesList = new ArrayList<>();
     /**
-     *
+     * This will create a new Employee object with their age and name.
      * @param age The employees age.
      * @param name The employees name.
      */
@@ -29,7 +29,7 @@ public class Employee extends Person{
     }
 
     /**
-     * This method will print out all the notes attached to the employee specified in the MainMenu.
+     * This method will print out all the notes attached to the employee specified in the main menu.
      */
     public void getEmpoyeeNoteList(){
         int i = 1;
@@ -45,7 +45,7 @@ public class Employee extends Person{
     }
 
     /**
-     * This method will remove the specified note.
+     * This method will remove the specified note or return an error message.
      * @param i The specified note number as seen by the user.
      */
     public void removeEmployeeNote(int i){
@@ -62,7 +62,7 @@ public class Employee extends Person{
 
     /**
      * This method is a part of the daily profit calculation.
-     * @return This returns the costs of the employees wages to be subtracted from the profits.
+     * @return This returns the costs of the employees wages to be subtracted from the days income.
      */
     @Override
     public float profitCalculation() {
@@ -70,7 +70,7 @@ public class Employee extends Person{
     }
 
     /**
-     * This method prints out information of the employee specified in the MainMenu.
+     * This method prints out information of the employee specified in the main menu.
      * @return This returns the employees name, age and daily salary.
      */
     @Override
