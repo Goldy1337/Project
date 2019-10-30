@@ -246,68 +246,92 @@ public class Main {
         String userInput;
         if (animalType.equals("1")){
             System.out.println("Enter the new goats age");
-            userInput = inputScanner.nextLine();
-            age = Integer.parseInt(userInput);
-            System.out.println("Enter the new goats name");
-            userInput = inputScanner.nextLine();
-            Goat newGoat = new Goat(age, userInput, "goat");
-            System.out.println("Enter an ID for the new goat");
-            userInput = inputScanner.nextLine();
-            animals.put(userInput, newGoat);
-            FileUtils.writeToAnimalList(animals);
+            try {
+                userInput = inputScanner.nextLine();
+                age = Integer.parseInt(userInput);
+                System.out.println("Enter the new goats name");
+                userInput = inputScanner.nextLine();
+                Goat newGoat = new Goat(age, userInput, "goat");
+                System.out.println("Enter an ID for the new goat");
+                userInput = inputScanner.nextLine();
+                animals.put(userInput, newGoat);
+                FileUtils.writeToAnimalList(animals);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input, returning to menu\n");
+            }
         }
         else if (animalType.equals("2")){
             System.out.println("Enter the new sheep's age");
-            userInput = inputScanner.nextLine();
-            age = Integer.parseInt(userInput);
-            System.out.println("Enter the new sheep's name");
-            userInput = inputScanner.nextLine();
-            Sheep newSheep = new Sheep(age, userInput, "sheep");
-            System.out.println("Enter an ID for the new sheep");
-            userInput = inputScanner.nextLine();
-            animals.put(userInput, newSheep);
-            FileUtils.writeToAnimalList(animals);
+            try {
+                userInput = inputScanner.nextLine();
+                age = Integer.parseInt(userInput);
+                System.out.println("Enter the new sheep's name");
+                userInput = inputScanner.nextLine();
+                Sheep newSheep = new Sheep(age, userInput, "sheep");
+                System.out.println("Enter an ID for the new sheep");
+                userInput = inputScanner.nextLine();
+                animals.put(userInput, newSheep);
+                FileUtils.writeToAnimalList(animals);
+            } catch (Exception e) {
+                System.out.println("Invalid input, returning to menu\n");
+            }
         }
         else if (animalType.equals("3")){
             System.out.println("Enter the new ducks age");
-            userInput = inputScanner.nextLine();
-            age = Integer.parseInt(userInput);
-            System.out.println("Enter the new ducks name");
-            userInput = inputScanner.nextLine();
-            Duck newDuck = new Duck(age, userInput, "duck");
-            System.out.println("Enter an ID for the new duck");
-            userInput = inputScanner.nextLine();
-            animals.put(userInput, newDuck);
-            FileUtils.writeToAnimalList(animals);
+            try {
+                userInput = inputScanner.nextLine();
+                age = Integer.parseInt(userInput);
+                System.out.println("Enter the new ducks name");
+                userInput = inputScanner.nextLine();
+                Duck newDuck = new Duck(age, userInput, "duck");
+                System.out.println("Enter an ID for the new duck");
+                userInput = inputScanner.nextLine();
+                animals.put(userInput, newDuck);
+                FileUtils.writeToAnimalList(animals);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid input, returning to menu\n");
+            }
         }
-    } //TODO hindra krash om inte ett int matas till age
+    }
 
     private static void addEmployee(){
         int age = 0;
         String userInput;
         System.out.println("Enter the new employee's age");
-        userInput = inputScanner.nextLine();
-        age = Integer.parseInt(userInput);
-        System.out.println("Enter the new employee's name");
-        userInput = inputScanner.nextLine();
-        Employee newEmployee = new Employee(age, userInput);
-        System.out.println("Enter an ID for the new employee");
-        userInput = inputScanner.nextLine();
-        employees.put(userInput, newEmployee);
-        FileUtils.writeToEmployeeList(employees);
-    } //TODO hindra krash om inte ett int matas till age
+        try {
+            userInput = inputScanner.nextLine();
+            age = Integer.parseInt(userInput);
+            System.out.println("Enter the new employee's name");
+            userInput = inputScanner.nextLine();
+            Employee newEmployee = new Employee(age, userInput);
+            System.out.println("Enter an ID for the new employee");
+            userInput = inputScanner.nextLine();
+            employees.put(userInput, newEmployee);
+            FileUtils.writeToEmployeeList(employees);
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input, returning to menu\n");
+        }
+    }
 
     private static void addVisitor(){
         int age = 0;
         String userInput;
         System.out.println("Enter visitor age");
-        userInput = inputScanner.nextLine();
-        age = Integer.parseInt(userInput);
-        System.out.println("Enter visitor name");
-        userInput = inputScanner.nextLine();
-        Visitor newVisitor = new Visitor(age, userInput);
-        visitors.add(newVisitor);
-    } //TODO hindra krash om inte ett int matas till age
+        try {
+            userInput = inputScanner.nextLine();
+            age = Integer.parseInt(userInput);
+            System.out.println("Enter visitor name");
+            userInput = inputScanner.nextLine();
+            Visitor newVisitor = new Visitor(age, userInput);
+            visitors.add(newVisitor);
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Invalid input, returning to menu\n");
+        }
+    }
 
     private static void readFromSavedRegistries(){
         animals = FileUtils.readFromAnimalList("animalList.dat");
