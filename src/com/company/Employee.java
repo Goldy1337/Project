@@ -11,19 +11,26 @@ public class Employee extends Person{
 
     public void getEmpoyeeNoteList(){
         int i = 1;
-        for (EmployeeNotes noteList : employeeNotesList){
-            System.out.println("#" + i + ": " + noteList.getNote());
-            i++;
+        try {
+            for (EmployeeNotes noteList : employeeNotesList){
+                System.out.println("#" + i + ": " + noteList.getNote());
+                i++;
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error occurred, returning to menu");
         }
     }
 
     public void removeEmployeeNote(int i){
         i = i - 1;
-        if (employeeNotesList.contains(employeeNotesList.get(i))){
+        try {
             employeeNotesList.remove(i);
+            System.out.println("Removing note #" + i + "\n");
         }
-        else
-            System.out.println("No note found with that number");
+        catch (Exception e) {
+            System.out.println("Note not found, returning to menu\n");;
+        }
     }
 
     @Override

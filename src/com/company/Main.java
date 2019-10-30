@@ -162,8 +162,11 @@ public class Main {
                                             case "2":
                                                 System.out.println("Enter number of note to remove");
                                                 menuChoice = inputScanner.nextLine();
-                                                employees.get(employeeHolder).removeEmployeeNote(Integer.parseInt(menuChoice));
-                                                System.out.println("Removing note #" + menuChoice + "\n");
+                                                try {
+                                                    employees.get(employeeHolder).removeEmployeeNote(Integer.parseInt(menuChoice));
+                                                } catch (Exception e) {
+                                                    System.out.println("Invalid input, returning to menu\n");
+                                                }
                                                 break;
                                             case "3":
                                                 System.out.println("Returning to Employee Administration\n");
