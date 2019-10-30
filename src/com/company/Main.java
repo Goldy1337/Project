@@ -67,18 +67,18 @@ public class Main {
                             case "3":
                                 System.out.println("Showing all current animals\n");
                                 for (String i : animals.keySet()){
-                                    System.out.println("ID: " + i + ", " + animals.get(i).toString());
+                                    System.out.println("ID: " + i + ", " + animals.get(i).toString() + "\n");
                                 }
                                 break;
                             case "4":
                                 System.out.println("Enter ID for the animal");
                                 menuChoice = inputScanner.nextLine();
                                 if (animals.containsKey(menuChoice)) {
-                                    System.out.println(animals.get(menuChoice));
+                                    System.out.println(animals.get(menuChoice) + "\n");
                                     break;
                                 }
                                 else if (!animals.containsKey(menuChoice)){
-                                    System.out.println("Animal ID not found");
+                                    System.out.println("Animal ID not found\n");
                                     break;
                                 }
                             case "5":
@@ -125,15 +125,14 @@ public class Main {
                             case "3":
                                 System.out.println("Showing all current employees\n");
                                 for (String i : employees.keySet()){
-                                    System.out.println("ID: " + i + ", " + employees.get(i).toString());
-                                    System.out.println("");
+                                    System.out.println("ID: " + i + ", " + employees.get(i).toString() + "\n");
                                 }
                                 break;
                             case "4":
                                 System.out.println("Enter ID for the employee");
                                 menuChoice = inputScanner.nextLine();
                                 if (employees.containsKey(menuChoice)){
-                                    System.out.println(employees.get(menuChoice));
+                                    System.out.println(employees.get(menuChoice) + "\n");
                                     break;
                                 }
                                 else if (!employees.containsKey(menuChoice)){
@@ -157,15 +156,13 @@ public class Main {
                                                 System.out.println("Add note");
                                                 menuChoice = inputScanner.nextLine();
                                                 EmployeeNotes employeeNote = new EmployeeNotes(menuChoice);
-                                                System.out.println("Enter employee ID to attach note");
-                                                menuChoice = inputScanner.nextLine();
-                                                employees.get(menuChoice).employeeNotesList.add(employeeNote);
+                                                employees.get(employeeHolder).employeeNotesList.add(employeeNote);
                                                 FileUtils.writeToEmployeeList(employees);
                                                 break;
                                             case "2":
                                                 System.out.println("Enter number of note to remove");
                                                 menuChoice = inputScanner.nextLine();
-                                                employees.get(employeeHolder).employeeNotesList.remove(Integer.parseInt(menuChoice));
+                                                employees.get(employeeHolder).removeEmployeeNote(Integer.parseInt(menuChoice));
                                                 System.out.println("Removing note #" + menuChoice + "\n");
                                                 break;
                                             case "3":
@@ -177,44 +174,6 @@ public class Main {
                                         System.out.println("Employee ID not found\n");
                                         break;
                                     }
-                                    /*System.out.println("1. View employee notes\n" +
-                                            "2. Add employee notes\n" +
-                                            "3. Remove employee notes\n" +
-                                            "4. Back to Employee Administration");
-                                    menuChoice = inputScanner.nextLine();
-                                    switch (menuChoice) {
-                                        case "1":
-                                            System.out.println("Enter employee ID");
-                                            menuChoice = inputScanner.nextLine();
-                                            if (employees.containsKey(menuChoice)) {
-                                                employees.get(menuChoice).getEmpoyeeNoteList();
-                                                System.out.println("");
-                                                break;
-                                            }
-                                            else if (!employees.containsKey(menuChoice)) {
-                                                System.out.println("Employee ID not found\n");
-                                                break;
-                                            }
-                                        case "2":
-                                            System.out.println("Add note");
-                                            menuChoice = inputScanner.nextLine();
-                                            EmployeeNotes employeeNote = new EmployeeNotes(menuChoice);
-                                            System.out.println("Enter employee ID to attach note");
-                                            menuChoice = inputScanner.nextLine();
-                                            employees.get(menuChoice).employeeNotesList.add(employeeNote);
-                                            FileUtils.writeToEmployeeList(employees);
-                                            break;
-                                        case "3":
-                                            System.out.println("Enter employee ID");
-                                            menuChoice = inputScanner.nextLine();
-                                            employees.get(menuChoice).employeeNotesList.remove()
-                                            break;
-                                        case "4":
-                                            System.out.println("Returning to Employee Administration\n");
-                                            break;
-                                        default:
-                                            System.out.println("Choose your option by entering the corresponding number and pressing enter\n");
-                                    }*/
                                 }
                                 break;
                             case "6":
