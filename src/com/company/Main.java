@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     //TODO, dokumentation, UML, JAR-fil
-    private static Scanner inputScanner = new Scanner(System.in); //TODO Ny klass som håller alla listor
+    private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
 
     public static void main(String[] args) {
