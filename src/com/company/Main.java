@@ -3,7 +3,6 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    //TODO, dokumentation, JAR-fil
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
 
