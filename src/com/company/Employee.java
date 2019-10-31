@@ -31,7 +31,7 @@ public class Employee extends Person{
     /**
      * This method will print out all the notes attached to the employee specified in the main menu.
      */
-    public void getEmpoyeeNoteList(){
+    public void getEmployeeNoteList(){
         int i = 1;
         try {
             for (EmployeeNotes noteList : employeeNotesList){

@@ -3,16 +3,16 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    //TODO, dokumentation, UML, JAR-fil, finslipa JavaDoc i Employee
+    //TODO, dokumentation, JAR-fil
     private static Scanner inputScanner = new Scanner(System.in);
     private static String menuChoice = "";
 
     public static void main(String[] args) {
         readFromSavedRegistries();
-        MainMenu();
+        mainMenu();
     }
 
-    private static void MainMenu(){
+    private static void mainMenu(){
         while (!menuChoice.equals("9")){
             System.out.println("Welcome to Lush Acres Petting Zoo, please choose your option below\n" +
                     "1. Animal administration\n" +
@@ -140,7 +140,7 @@ public class Main {
                                     System.out.println("Enter employee ID");
                                     menuChoice = inputScanner.nextLine();
                                     if (PettingZoo.employees.containsKey(menuChoice)) {
-                                        PettingZoo.employees.get(menuChoice).getEmpoyeeNoteList();
+                                        PettingZoo.employees.get(menuChoice).getEmployeeNoteList();
                                         System.out.println("");
                                         System.out.println("1. Add note\n" +
                                                 "2. Remove note\n" +
